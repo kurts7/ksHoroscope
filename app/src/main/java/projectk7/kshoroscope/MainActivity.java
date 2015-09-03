@@ -8,6 +8,9 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageButton;
 
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
+
 public class MainActivity extends AppCompatActivity {
 
     public static String[] signs = {"aries", "taurus", "gemini", "cancer", "leo", "virgo", "libra", "scorpio", "sagittarius", "capricorn", "aquarius", "pisces"};
@@ -22,6 +25,16 @@ public class MainActivity extends AppCompatActivity {
             setClickListenerToImageButton(sign);
         }
 
+        //-------------------------------ADD PLACE-----------------------------------------
+
+        AdView adView = (AdView)this.findViewById(R.id.adViewMainScreen);
+
+        AdRequest adRequest =new com.google.android.gms.ads.AdRequest.Builder()
+                .addTestDevice(AdRequest.DEVICE_ID_EMULATOR)
+                .addTestDevice("e2ae6d65c5bc0ad2").build();
+
+        //AdRequest adRequest = new AdRequest.Builder().build();
+        adView.loadAd(adRequest);
     }
 
     @Override
